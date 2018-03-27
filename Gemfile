@@ -45,7 +45,7 @@ group :development do
   gem 'spring'
 end
 
-gem 'blacklight', ">= 5.3.0"
+gem 'blacklight', "~> 6.14"
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 group :development, :test do
   gem 'solr_wrapper', '>= 0.3'
