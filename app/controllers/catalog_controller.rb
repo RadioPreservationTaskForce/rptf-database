@@ -114,7 +114,7 @@ class CatalogController < ApplicationController
     config.add_index_field 'collectionFormats_txt', label: 'Formats', link_to_search: 'collectionFormatsFacet'
     config.add_index_field 'collectionExtent_txt', label: 'Extent'
     config.add_index_field 'collectionOwnerName_txt', label: 'Repository/Collector'
-    config.add_index_field 'collectionFindingAidUrl_txt', helper_method: :link_to_finding_aid, label: 'Online finding aid'
+    config.add_index_field 'collectionFindingAidUrl_txt', helper_method: :link_to_finding_aid_or_catalog, label: 'Online finding aid'
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
@@ -160,9 +160,9 @@ class CatalogController < ApplicationController
     config.add_show_field 'collectionNotes_txt', label: 'Notes'
 
     config.add_show_field 'collectionWebsiteUrl_txt', label: 'Website URL'
-    config.add_show_field 'collectionFindingAidUrl_txt', helper_method: :link_to_finding_aid, label: 'Online finding aid'
+    config.add_show_field 'collectionFindingAidUrl_txt', helper_method: :link_to_finding_aid_or_catalog, label: 'Online finding aid'
     config.add_show_field 'collectionOclcNumber_txt', label: 'OCLC record'
-    config.add_show_field 'collectionCatalogUrl_txt', label: 'Local catalog record'
+    config.add_show_field 'collectionCatalogUrl_txt', helper_method: :link_to_finding_aid_or_catalog, label: 'Local catalog record'
 
 
 
