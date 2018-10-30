@@ -44,6 +44,11 @@ class CatalogController < ApplicationController
     config.show.title_field = 'collectionTitle_txt'
     #config.show.display_type_field = 'format'
 
+    # Suppress email, SMS, and citation actions until we get them working
+    config.show.document_actions.delete(:email)
+    config.show.document_actions.delete(:sms)
+    config.show.document_actions.delete(:citation)
+
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
     #
@@ -159,7 +164,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'collectionCondition_txt', label: 'Condition note'
     config.add_show_field 'collectionNotes_txt', label: 'Notes'
 
-    config.add_show_field 'collectionWebsiteUrl_txt', label: 'Website URL'
+    config.add_show_field 'collectionWebsiteUrl_txt', label: 'Website URL',  helper_method: :link_to_finding_aid_or_catalog
     config.add_show_field 'collectionFindingAidUrl_txt', helper_method: :link_to_finding_aid_or_catalog, label: 'Online finding aid'
     config.add_show_field 'collectionOclcNumber_txt', label: 'OCLC record'
     config.add_show_field 'collectionCatalogUrl_txt', helper_method: :link_to_finding_aid_or_catalog, label: 'Local catalog record'
