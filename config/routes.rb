@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   mount Blacklight::Engine => '/'
-  root to: "home#show"
-  #root to: "catalog#index"
+  root to: 'pages#show', id: 'home'
   concern :searchable, Blacklight::Routes::Searchable.new
 
 

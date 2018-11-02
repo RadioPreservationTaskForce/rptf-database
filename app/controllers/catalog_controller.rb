@@ -44,6 +44,11 @@ class CatalogController < ApplicationController
     config.show.title_field = 'collectionTitle_txt'
     #config.show.display_type_field = 'format'
 
+    # Suppress email, SMS, and citation actions until we get them working
+    config.show.document_actions.delete(:email)
+    config.show.document_actions.delete(:sms)
+    config.show.document_actions.delete(:citation)
+
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
     #
@@ -83,7 +88,7 @@ class CatalogController < ApplicationController
        #:years_10 => { label: 'within 10 Years', fq: "pub_date:[#{Time.zone.now.year - 10 } TO *]" },
        #:years_25 => { label: 'within 25 Years', fq: "pub_date:[#{Time.zone.now.year - 25 } TO *]" }
     #}
-    
+
     config.add_facet_field 'collectionContentTypesFacet', label: 'Content type', limit: 25
     config.add_facet_field 'collectionFormatsFacet', label: 'Format', limit: 25
     config.add_facet_field 'collectionGenresFacet', label: 'Genre', limit: 25
@@ -114,7 +119,7 @@ class CatalogController < ApplicationController
     config.add_index_field 'collectionFormats_txt', label: 'Formats', link_to_search: 'collectionFormatsFacet'
     config.add_index_field 'collectionExtent_txt', label: 'Extent'
     config.add_index_field 'collectionOwnerName_txt', label: 'Repository/Collector'
-    config.add_index_field 'collectionFindingAidUrl_txt', label: 'Online finding aid'
+    config.add_index_field 'collectionFindingAidUrl_txt', helper_method: :link_to_finding_aid_or_catalog, label: 'Online finding aid'
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
@@ -132,7 +137,7 @@ class CatalogController < ApplicationController
     #config.add_show_field 'published_vern_display', label: 'Published'
     #config.add_show_field 'lc_callnum_display', label: 'Call number'
     #config.add_show_field 'isbn_t', label: 'ISBN'
-    
+
     config.add_show_field 'collectionDescription_txt', label: 'Description'
     config.add_show_field 'collectionCreators_txt', label: 'Creators'
     config.add_show_field 'collectionDates_txt', label: 'Dates'
@@ -149,22 +154,22 @@ class CatalogController < ApplicationController
     config.add_show_field 'collectionIndexingTerms_txt', label: 'Indexing terms'
     config.add_show_field 'collectionLanguages_txt', label: 'Languages'
     config.add_show_field 'collectionGenres_txt', label: 'Genres'
-    
+
     config.add_show_field 'collectionAccessStatement_txt', label: 'Access statement'
     config.add_show_field 'collectionUsageStatement_txt', label: 'Usage statement'
-    
+
     config.add_show_field 'collectionInventoryDescription_txt', label: 'Inventory description'
     config.add_show_field 'collectionSupportingDocumentationDescription_txt', label: 'Supporting documentation'
     config.add_show_field 'collectionHistoricalRelevance_txt', label: 'Historical relevance'
     config.add_show_field 'collectionCondition_txt', label: 'Condition note'
     config.add_show_field 'collectionNotes_txt', label: 'Notes'
-    
-    config.add_show_field 'collectionWebsiteUrl_txt', label: 'Website URL'
-    config.add_show_field 'collectionFindingAidUrl_txt', label: 'Online finding aid'
+
+    config.add_show_field 'collectionWebsiteUrl_txt', label: 'Website URL',  helper_method: :link_to_finding_aid_or_catalog
+    config.add_show_field 'collectionFindingAidUrl_txt', helper_method: :link_to_finding_aid_or_catalog, label: 'Online finding aid'
     config.add_show_field 'collectionOclcNumber_txt', label: 'OCLC record'
-    config.add_show_field 'collectionCatalogUrl_txt', label: 'Local catalog record'
-    
-    
+    config.add_show_field 'collectionCatalogUrl_txt', helper_method: :link_to_finding_aid_or_catalog, label: 'Local catalog record'
+
+
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
