@@ -48,6 +48,7 @@ end
 gem 'blacklight', "~> 6.14"
 gem 'bootswatch-rails', '~> 3.3.5'
 gem 'high_voltage', '~> 3.1'
+gem 'okcomputer'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 group :development, :test do
   gem 'solr_wrapper', '>= 0.3'
