@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '~> 5.1.0'
 # Use mysql as the database for Active Record
 gem 'mysql2', '~> 0.5.0'
+gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -49,6 +50,7 @@ gem 'blacklight', "~> 6.14"
 gem 'bootswatch-rails', '~> 3.3.5'
 gem 'high_voltage', '~> 3.1'
 gem 'okcomputer'
+gem 'puma'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 group :development, :test do
   gem 'solr_wrapper', '>= 0.3'

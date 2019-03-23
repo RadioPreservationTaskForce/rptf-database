@@ -50,5 +50,8 @@ test:
 #
 # For the RPTF database, this is set in the site's Apache configuration
 production:
-  <<: *default
+  #<<: *default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   url: <%= ENV['DATABASE_URL'] %>
