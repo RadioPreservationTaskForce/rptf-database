@@ -21,6 +21,28 @@ The repository ships with 100 records for testing.
 bash `bundle exec solr_wrapper dir`/bin/post -c blacklight-core test/sample-data.json
 ```
 
+## Indexing production data
+
+Production data is managed in the
+[rptf-index-data](https://github.com/RadioPreservationTaskForce/rptf-index-data)
+repository. Indexing updates should be incremental based on the date of the files. For example:
+
+```bash
+/opt/solr/bin/post -c blacklight-core test/collections_2019-03-26.json
+```
+
+You can delete records using [JSON update commands](https://lucene.apache.org/solr/guide/7_5/uploading-data-with-index-handlers.html#sending-json-update-commands). For example, create a new JSON file that contains the IDs of the records you want to delete.
+
+```json
+{"delete": ["collection_1204", "collection_1214", "collection_1215"]}
+```
+
+Then run the following command specifying your file like the following (note: this is different from the above command):
+
+```bash
+/opt/solr/bin/post -c blacklight-core -format solr delete-these.json
+```
+
 ## Deployment
 
 Production secrets (e.g. MySQL database credentials) are defined using environment variables:
