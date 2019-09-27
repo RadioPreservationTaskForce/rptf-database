@@ -1,21 +1,12 @@
-@import 'bootstrap-sprockets';
-
-$brand-primary: rgb(172, 37, 49);
+$primary: rgb(172, 37, 49);
 $navbar-height: 50px;
-$btn-default-color: #fff;
-
-@import 'bootswatch/simplex/variables';
-
-$text-color: $gray;
 
 @import 'bootstrap';
-
-@import 'bootswatch/simplex/bootswatch';
-
 @import 'blacklight/blacklight';
-
-#sort-dropdown .dropdown-toggle, #per_page-dropdown .dropdown-toggle {
-  color: #fff;
-}
 .panel-heading.collapse-toggle .panel-title:after { color: inherit; }
 .caret, #sort-dropdown .dropdown-toggle .caret, #per_page-dropdown .dropdown-toggle .caret { color: inherit; }
+nav.bg-dark.topbar {
+  background: $primary !important;
+  ul li.nav-item a { color: #eee; }
+  ul li.nav-item a:hover { color: #ccc; }
+}

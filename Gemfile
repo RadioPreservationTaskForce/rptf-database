@@ -46,8 +46,10 @@ group :development do
   gem 'spring'
 end
 
-gem 'blacklight', "~> 6.14"
-gem 'bootswatch-rails', '~> 3.3.5'
+gem 'blacklight', "~> 7.0"
+gem 'bootstrap', '~> 4.0'
+gem 'popper_js'
+gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
 gem 'high_voltage', '~> 3.1'
 gem 'okcomputer'
 gem 'puma'
