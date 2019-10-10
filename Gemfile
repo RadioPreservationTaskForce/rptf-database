@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.0'
+gem 'rails', '~> 5.2.0'
 # Use mysql as the database for Active Record
 gem 'mysql2', '~> 0.5.0'
 gem 'pg'
@@ -40,20 +40,24 @@ end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
+  gem 'web-console', '~> 3.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
 
-gem 'blacklight', "~> 6.14"
-gem 'bootswatch-rails', '~> 3.3.5'
+gem 'blacklight', "~> 7.0"
+gem 'bootstrap', '~> 4.0'
+gem 'popper_js'
+gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
 gem 'high_voltage', '~> 3.1'
 gem 'okcomputer'
 gem 'puma'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 group :development, :test do
   gem 'solr_wrapper', '>= 0.3'
+  gem 'listen'
+  gem 'pry'
 end
 
 gem 'rsolr', '~> 1.0'

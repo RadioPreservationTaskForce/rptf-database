@@ -12,7 +12,10 @@
 //
 //= require jquery3
 //= require jquery_ujs
-//= require turbolinks//
+//= require turbolinks
+//= require popper
+//= require twitter/typeahead
+//= require bootstrap
 // Required by Blacklight
 //= require blacklight/blacklight
 
