@@ -1,0 +1,6 @@
+const trackGoogleAnalytics = (event) => {
+  if (typeof(gtag) == "function") {
+    gtag('event', 'page_view', { 'send_to': '<%= Rails.application.credentials.dig(:google_analytics) %>'});
+  }
+}
+document.addEventListener('turbolinks:load', trackGoogleAnalytics)
