@@ -13,3 +13,5 @@
 /tmp
 public/assets/**
 .DS_Store
+
+/config/master.key
